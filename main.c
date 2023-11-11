@@ -23,9 +23,10 @@ num_of_chars_read = getline(&lineptr, &n, stdin);
 
 lineptr_coppy = malloc(sizeof(char) * num_of_chars_read);
 if (lineptr_coppy == NULL){
-        perror("tsh: faile to allocate memory");
-        return (-1);
-}       
+     perror("tsh: faile to allocate memory");
+       return (-1);
+}
+
 strcpy(lineptr_coppy, lineptr);
 
 if (num_of_chars_read == -1){
@@ -48,13 +49,12 @@ token = strtok(lineptr_coppy,delim);
                 strcpy(argv[i], token);
                 token = strtok(NULL, delim);
 
-                printf(">>>  %s \n", argv[i]);
+                printf(">>> args  %s \n", argv[i]);
             }
 
 argv[i] = NULL;
 
 free(argv);
-free(lineptr);
 free(lineptr);
 }
 }
