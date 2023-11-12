@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -Wall -Wextra -Werror -pedantic shell.c execomd.c  -o shell
+gcc -Wall -Wextra -Werror -pedantic *.c  -o shell
