@@ -41,6 +41,12 @@ argv[i] = malloc(strlen(token) + 1);
 strcpy(argv[i], token);
 token = strtok(NULL, delim); }
 argv[i] = NULL;
+if (strcmp(argv[0], "exit") == 0)
+        {
+            printf("Exiting shell... \n");
+            return (0);
+        }
+free(lineptr_copy);
 execomd(argv); }
 free(lineptr_copy);
 free(lineptr);

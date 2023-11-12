@@ -6,6 +6,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 void execomd(char **argv);
 char *get_path(char *command_type);
