@@ -24,7 +24,6 @@ return (-1); }
 lineptr_copy = malloc(sizeof(char) * num_of_chars_read);
 if (lineptr_copy == NULL)
 {
-perror("tsh: failed to allocate memory");
 return (-1); }
 strcpy(lineptr_copy, lineptr);
 token = strtok(lineptr, delim);
@@ -36,16 +35,13 @@ num_of_tokens++;
 argv = malloc(sizeof(char *) * num_of_tokens);
 token = strtok(lineptr_copy, delim);
 for (i = 0; token != NULL; i++)
-{
-argv[i] = malloc(strlen(token) + 1);
+{argv[i] = malloc(strlen(token) + 1);
 strcpy(argv[i], token);
 token = strtok(NULL, delim); }
 argv[i] = NULL;
 if (strcmp(argv[0], "exit") == 0)
-        {
-            printf("Exiting shell... \n");
-            return (0);
-        }
+{printf("Exiting shell... \n");
+return (0); }
 execomd(argv); }
 free(lineptr_copy);
 free(lineptr);
