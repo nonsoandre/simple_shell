@@ -6,21 +6,20 @@
 
 int main(void)
 {
-	char *token, *lineptr;
+	char *token, *lineptr, **argv;
 	char *lineptr_copy = NULL;
 	const char *delim = " \n";
 	size_t n = 0;
-	char **argv;
-	int i = 0;
-	int num_of_tokens = 0;
+	int i = 0, num_of_tokens = 0;
 	ssize_t num_of_chars_read;
 
 	while (1)
-	{printf("$ ");
+	{
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 		num_of_chars_read = getline(&lineptr, &n, stdin);
 		if (num_of_chars_read == -1)
-		{printf("Exiting shell... \n");
-			return (-1); }
+			return (0);
 		lineptr_copy = malloc(sizeof(char) * num_of_chars_read);
 		if (lineptr_copy == NULL)
 		{
@@ -40,7 +39,7 @@ int main(void)
 			token = strtok(NULL, delim); }
 		argv[i] = NULL;
 		if (strcmp(argv[0], "exit") == 0)
-		{printf("Exiting shell... \n");
+		{
 			return (0); }
 		execomd(argv); }
 	free(lineptr_copy);
