@@ -1,5 +1,23 @@
 #include "main.h"
 /**
+ * free_argv - Frees the memory allocated for an array of strings.
+ * @argv: A pointer to a pointer to an array of strings.
+ *
+ * This function frees the memory allocated for each string in the array
+ * and then frees the array itself. The pointer to the array is set to NULL
+ * after freeing to avoid using a dangling pointer.
+ */
+void free_argv(char **argv)
+{
+	int i;
+
+	for (i = 0; argv[i] != NULL; i++)
+		free(argv[i]);
+	free(argv);
+	*argv = NULL;
+}
+
+/**
  * main - entry poin
  * Return: success or failure checker
  */
@@ -44,4 +62,5 @@ int main(void)
 		execomd(argv); }
 	free(lineptr_copy);
 	free(lineptr);
+	free_argv(argv);
 	return (0); }
