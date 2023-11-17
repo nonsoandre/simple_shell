@@ -34,7 +34,7 @@ int main(void)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			printf("$ ");
+		write(STDOUT_FILENO, "$ ", 8);
 		num_of_chars_read = getline(&lineptr, &n, stdin);
 		if (num_of_chars_read == -1)
 			return (0);
